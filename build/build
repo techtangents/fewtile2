@@ -2,4 +2,28 @@
 
 here=`cd \`dirname $0\` && pwd`
 root=`cd "$here"/.. && pwd`
-runhaskell "$here/build.hs" "$root"
+scratch="$root/scratch"
+dist="$root/dist"
+
+clean() {
+  if [ -d "$1" ]; then
+    rm -rf "$1" && mkdir -p "$1"
+  fi
+}
+
+cleanDirs() {
+  clean "$scratch" &&
+  clean "$dist"
+}
+
+compile() {
+  rsync -aH "$root/src/elm/" "$scratch/" &&
+  cd "$scratch" &&
+  elm --make TechTangents/Fewtile/Main.elm
+}
+
+gather() {
+  rsync -aH --exclude '*.elm' "$scratch/" "$dist/"
+}
+
+cleanDirs && compile && gather
