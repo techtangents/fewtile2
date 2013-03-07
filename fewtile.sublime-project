@@ -1,0 +1,16 @@
+{
+	"folders":
+	[
+		{
+			"path": "/Users/dylan/techtangents/fewtile2",
+      "folder_exclude_patterns": ["scratch", "dist"]
+		}
+	],
+  "build_systems":
+  [
+    {
+      "name": "fewtile",
+      "cmd": ["$project_path/build/build"]
+    }
+  ]
+}

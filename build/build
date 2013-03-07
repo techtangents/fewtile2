@@ -19,7 +19,7 @@ cleanDirs() {
 compile() {
   rsync -aH "$root/src/elm/" "$scratch/" &&
   cd "$scratch" &&
-  elm --make TechTangents/Fewtile/Main.elm
+  elm --make Techtangents/Fewtile/Main.elm
 }
 
 gather() {
