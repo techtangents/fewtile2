@@ -1,8 +1,19 @@
 module Techtangents.Fewtile.Alien.Cycler where
 
-import Techtangents.Fewtile.Alien.AutomatonExtras
-import Techtangents.Fewtile.Alien.MaybeExtras
-import Techtangents.Fewtile.Alien.NonEmpty
+import Automaton (Automaton, state, pure)
 
--- cycler :: NonEmpty a -> Automaton z a
-cycler list = anonaton list (nonEmpty (\x xs -> (x, maybeOr list (neFromList xs))))
+import Techtangents.Fewtile.Alien.Fn (const)
+import Techtangents.Fewtile.Alien.MaybeExtras (maybeOr)
+import Techtangents.Fewtile.Alien.NonEmpty (NonEmpty, neFromList)
+
+
+cycle : NonEmpty a -> NonEmpty a
+cycle (NonEmpty h t) =
+  case t of []        -> NonEmpty h t
+            (x :: xs) -> NonEmpty x (xs ++ [h])
+
+cycler : NonEmpty a -> Automaton z (NonEmpty a)
+cycler list =
+  state
+    list
+    (\a b -> cycle b)

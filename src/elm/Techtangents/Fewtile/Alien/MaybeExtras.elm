@@ -1,5 +1,7 @@
 module Techtangents.Fewtile.Alien.MaybeExtras where
 
--- maybeOr : a -> Maybe a -> a
+import Maybe (Maybe, maybe)
+
+maybeOr : a -> Maybe a -> a
 maybeOr other =
-  Maybe.maybe other id
+  maybe other id

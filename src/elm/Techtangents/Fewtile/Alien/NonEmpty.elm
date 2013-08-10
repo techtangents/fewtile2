@@ -1,21 +1,22 @@
 module Techtangents.Fewtile.Alien.NonEmpty where
 
-import Techtangents.Fewtile.Alien.MaybeExtras
+import Maybe (Maybe, Nothing, Just)
+import Techtangents.Fewtile.Alien.MaybeExtras (maybeOr)
 
 -- Non-Empty list
 data NonEmpty x = NonEmpty x [x]
 
--- (x -> [x] -> z) -> NonEmpty x -> z
-nonEmpty f (NonEmpty x xs) = f x xs
+neHead : NonEmpty a -> a
+neHead (NonEmpty x _) = x
 
--- NonEmpty x -> [x]
-neToList = nonEmpty (::)
+neTail : NonEmpty a -> [a]
+neTail (NonEmpty _ xs) = xs
 
--- neFromList : [x] -> NonEmpty xs
+neToList : NonEmpty a -> [a]
+neToList (NonEmpty x xs) = x :: xs
+
+neFromList : [a] -> Maybe (NonEmpty a)
 neFromList list =
-  case list of []      -> Maybe.Nothing
-               (x::xs) -> Maybe.Just (NonEmpty x xs)
+  case list of []        -> Nothing
+               (x :: xs) -> Just (NonEmpty x xs)
 
--- neFromListOr : NonEmpty x -> [x] -> NonEmpty x
-neFromListOr other qs =
-  maybeOr other (neFromList xs)

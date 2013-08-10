@@ -1,5 +1,7 @@
 module Techtangents.Fewtile.LaidTile where
 
+import Techtangents.Fewtile.Tile
+
 data LaidTile = LaidTile { id : String
                          , text : String
                          , weight : Int

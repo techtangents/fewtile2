@@ -1,9 +1,11 @@
 module Techtangents.Fewtile.Sources.DummySource where
 
-import Techtangents.Fewtile.Source
-import Techtangents.Fewtile.Alien.Cycler
-import Techtangents.Fewtile.Tile
-import Techtangents.Fewtile.Alien.NonEmpty
+import Automaton (Automaton, run)
+
+import Techtangents.Fewtile.Sources.Source
+import Techtangents.Fewtile.Alien.Cycler (cycler)
+import Techtangents.Fewtile.Tile (Tile)
+import Techtangents.Fewtile.Alien.NonEmpty (NonEmpty)
 
 s1t1 = Tile { id = "1", text = "hello", weight = 3, color = red }
 s1t2 = Tile { id = "2", text = "chook", weight = 3, color = green }
@@ -14,10 +16,21 @@ s2t2 = Tile { id = "2", text = "chook2", weight = 3, color = magenta }
 state1 = [s1t1, s1t2]
 state2 = [s2t1, s2t2]
 
--- dummyTiles : NonEmpty [Tile]
+dummyTiles : NonEmpty [Tile]
 dummyTiles =
- NonEmpty state1 [state2]
+  NonEmpty state1 [state2]
 
--- dummySource : Signal [Tile]
+-- run : Automaton a b -> b -> Signal a -> Signal b
+
+ticker : Signal Time
+ticker = every <| second * 2
+
+cc : Automaton Time (NonEmpty [Tile])
+cc = cycler dummyTiles
+
+{--
+dummySource : Signal [Tile]
 dummySource =
-  Automaton.run (cycler dummyTiles) (every $ second * 2)
+  run (cycler dummyTiles) [] (every (second * 2))
+
+  --}
