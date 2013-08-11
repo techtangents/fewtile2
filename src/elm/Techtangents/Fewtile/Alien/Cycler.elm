@@ -1,10 +1,10 @@
 module Techtangents.Fewtile.Alien.Cycler where
 
-import Automaton (Automaton, state, pure)
+import Automaton (Automaton, state, pure, hiddenState)
 
 import Techtangents.Fewtile.Alien.Fn (const)
 import Techtangents.Fewtile.Alien.MaybeExtras (maybeOr)
-import Techtangents.Fewtile.Alien.NonEmpty (NonEmpty, neFromList)
+import Techtangents.Fewtile.Alien.NonEmpty (NonEmpty, neFromList, neHead)
 
 
 cycle : NonEmpty a -> NonEmpty a
@@ -12,8 +12,7 @@ cycle (NonEmpty h t) =
   case t of []        -> NonEmpty h t
             (x :: xs) -> NonEmpty x (xs ++ [h])
 
-cycler : NonEmpty a -> Automaton z (NonEmpty a)
+-- An Automaton that ignores the value of its input signal and produces a cycle of values from the input list.
+cycler : NonEmpty a -> Automaton z a
 cycler list =
-  state
-    list
-    (\a b -> cycle b)
+  hiddenState list (\_ l -> let l' = cycle l in (l', neHead l'))
