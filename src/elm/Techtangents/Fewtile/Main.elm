@@ -28,18 +28,3 @@ box pw ph lt =
      |> color c
      |> container pw ph (topLeftAt (absolute x) (absolute y))
      |> toForm
-
---render :
---  Int
---  -> Int
---  -> [Form]
---render w h =
---  [ box w h <| Shingle { id: "hello"
---                       , text: "Box 1"
---                       , weight: 3
---                       , color: red
---                       , pos: {x: 20, y: 0},
---                       , size: {width: 300, height: 200}
---                       }
---  ]
-
