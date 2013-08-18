@@ -28,3 +28,25 @@ box pw ph lt =
      |> color c
      |> container pw ph (topLeftAt (absolute x) (absolute y))
      |> toForm
+
+progressColor : Float -> Color -> Color -> Color
+progressColor percent start goal =
+  -- TODO: linear progression through a colour space
+  if | percent < 50 -> start
+     | otherwise    -> goal
+
+progressAll : Float -> [(Shingle, Shingle)] -> [Shingle]
+progressAll percent shingles = map (\(start, end) -> progress percent start goal) shingles
+
+progress : Float -> Shingle -> Shingle -> Shingle
+progress percent start goal =
+  Shingle { i: start.i
+          , t: start.t
+          , m: start.m
+          , c: progressColor percent start.c end.c
+          , x: progressInt percent start.x end.x
+          , y: progressInt percent start.y end.y
+          , w: progressInt percent start.w end.w
+          , h: progressInt percent start.h end.h
+          }
+
