@@ -15,4 +15,4 @@ cycle (NonEmpty h t) =
 -- An Automaton that ignores the value of its input signal and produces a cycle of values from the input list.
 cycler : NonEmpty a -> Automaton z a
 cycler list =
-  hiddenState list (\_ l -> let l' = cycle l in (l', neHead l'))
+  hiddenState list (\_ cur -> let next = cycle cur in (next, neHead next))

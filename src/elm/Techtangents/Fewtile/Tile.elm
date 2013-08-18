@@ -1,7 +1,7 @@
 module Techtangents.Fewtile.Tile where
 
-data Tile = Tile { id : String
-                 , text : String
-                 , weight : Int
-                 , color : Color
+data Tile = Tile { i : String
+                 , t : String
+                 , m : Int
+                 , c : Color
                  }

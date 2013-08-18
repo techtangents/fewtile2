@@ -1,4 +1,4 @@
 module Techtangents.Fewtile.Alien.Fn where
 
-const : b -> a -> a
-const _ a = a
+konst : b -> a -> a
+konst _ a = a
