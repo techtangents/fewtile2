@@ -1,7 +1,6 @@
 module Techtangents.Fewtile.Alien.NonEmpty where
 
 import Maybe (Maybe, Nothing, Just)
-import Techtangents.Fewtile.Alien.MaybeExtras (maybeOr)
 
 -- Non-Empty list
 data NonEmpty x = NonEmpty x [x]

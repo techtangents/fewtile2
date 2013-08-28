@@ -7,7 +7,7 @@ import Color
 import Automaton (Automaton, run, hiddenState)
 
 import Techtangents.Fewtile.Sources.DummySource (dummyShingleSource)
-import open Techtangents.Fewtile.Shingle
+import Techtangents.Fewtile.Shingle (Shingle)
 
 
 title = constant (JavaScript.fromString "Fewtile")
@@ -30,23 +30,26 @@ box pw ph lt =
      |> toForm
 
 progressColor : Float -> Color -> Color -> Color
-progressColor percent start goal =
+progressColor percent start end =
   -- TODO: linear progression through a colour space
   if | percent < 50 -> start
-     | otherwise    -> goal
+     | otherwise    -> end
+
+progressInt : Float -> Int -> Int -> Int
+progressInt percent start end = start + round ((toFloat (end - start)) / percent)
 
 progressAll : Float -> [(Shingle, Shingle)] -> [Shingle]
-progressAll percent shingles = map (\(start, end) -> progress percent start goal) shingles
+progressAll percent shingles = map (\(start, end) -> progress percent start end) shingles
 
 progress : Float -> Shingle -> Shingle -> Shingle
-progress percent start goal =
-  Shingle { i: start.i
-          , t: start.t
-          , m: start.m
-          , c: progressColor percent start.c end.c
-          , x: progressInt percent start.x end.x
-          , y: progressInt percent start.y end.y
-          , w: progressInt percent start.w end.w
-          , h: progressInt percent start.h end.h
+progress percent (Shingle start) (Shingle end) =
+  Shingle { i=start.i
+          , t=start.t
+          , m=start.m
+          , c=(progressColor percent start.c end.c)
+          , x=(progressInt   percent start.x end.x)
+          , y=(progressInt   percent start.y end.y)
+          , w=(progressInt   percent start.w end.w)
+          , h=(progressInt   percent start.h end.h)
           }
 
