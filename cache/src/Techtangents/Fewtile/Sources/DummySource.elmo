@@ -1,0 +1,131 @@
+Elm.Techtangents = Elm.Techtangents || {};
+Elm.Techtangents.Fewtile = Elm.Techtangents.Fewtile || {};
+Elm.Techtangents.Fewtile.Sources = Elm.Techtangents.Fewtile.Sources || {};
+Elm.Techtangents.Fewtile.Sources.DummySource = Elm.Techtangents.Fewtile.Sources.DummySource || {};
+Elm.Techtangents.Fewtile.Sources.DummySource.make = function (_elm) {
+   _elm.Techtangents = _elm.Techtangents || {};
+   _elm.Techtangents.Fewtile = _elm.Techtangents.Fewtile || {};
+   _elm.Techtangents.Fewtile.Sources = _elm.Techtangents.Fewtile.Sources || {};
+   _elm.Techtangents.Fewtile.Sources.DummySource = _elm.Techtangents.Fewtile.Sources.DummySource || {};
+   if (_elm.Techtangents.Fewtile.Sources.DummySource.values)
+   return _elm.Techtangents.Fewtile.Sources.DummySource.values;
+   var _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   _E = _N.Error.make(_elm),
+   _J = _N.JavaScript.make(_elm),
+   $moduleName = "Techtangents.Fewtile.Sources.DummySource";
+   var Automaton = Elm.Automaton.make(_elm);
+   var Basics = Elm.Basics.make(_elm);
+   var Color = Elm.Color.make(_elm);
+   var Graphics = Graphics || {};
+   Graphics.Collage = Elm.Graphics.Collage.make(_elm);
+   var Graphics = Graphics || {};
+   Graphics.Element = Elm.Graphics.Element.make(_elm);
+   var List = Elm.List.make(_elm);
+   var Maybe = Elm.Maybe.make(_elm);
+   var Native = Native || {};
+   Native.Ports = Elm.Native.Ports.make(_elm);
+   var Prelude = Elm.Prelude.make(_elm);
+   var Signal = Elm.Signal.make(_elm);
+   var String = Elm.String.make(_elm);
+   var Techtangents = Techtangents || {};
+   Techtangents.Fewtile = Techtangents.Fewtile || {};
+   Techtangents.Fewtile.Alien = Techtangents.Fewtile.Alien || {};
+   Techtangents.Fewtile.Alien.Cycler = Elm.Techtangents.Fewtile.Alien.Cycler.make(_elm);
+   var Techtangents = Techtangents || {};
+   Techtangents.Fewtile = Techtangents.Fewtile || {};
+   Techtangents.Fewtile.Alien = Techtangents.Fewtile.Alien || {};
+   Techtangents.Fewtile.Alien.NonEmpty = Elm.Techtangents.Fewtile.Alien.NonEmpty.make(_elm);
+   var Techtangents = Techtangents || {};
+   Techtangents.Fewtile = Techtangents.Fewtile || {};
+   Techtangents.Fewtile.Shingle = Elm.Techtangents.Fewtile.Shingle.make(_elm);
+   var Techtangents = Techtangents || {};
+   Techtangents.Fewtile = Techtangents.Fewtile || {};
+   Techtangents.Fewtile.Sources = Techtangents.Fewtile.Sources || {};
+   Techtangents.Fewtile.Sources.Source = Elm.Techtangents.Fewtile.Sources.Source.make(_elm);
+   var Techtangents = Techtangents || {};
+   Techtangents.Fewtile = Techtangents.Fewtile || {};
+   Techtangents.Fewtile.Tile = Elm.Techtangents.Fewtile.Tile.make(_elm);
+   var Text = Elm.Text.make(_elm);
+   var Time = Elm.Time.make(_elm);
+   var _op = {};
+   var ticker = Time.every(Time.second * 2);
+   var sstate2 = _J.toList([{_: {}
+                            ,color: Color.red
+                            ,h: 100
+                            ,id: "1"
+                            ,text: "hello"
+                            ,w: 300
+                            ,weight: 3
+                            ,x: 300
+                            ,y: 30}
+                           ,{_: {}
+                            ,color: Color.green
+                            ,h: 80
+                            ,id: "2"
+                            ,text: "chook"
+                            ,w: 200
+                            ,weight: 3
+                            ,x: 10
+                            ,y: 300}]);
+   var sstate1 = _J.toList([{_: {}
+                            ,color: Color.red
+                            ,h: 100
+                            ,id: "1"
+                            ,text: "hello"
+                            ,w: 300
+                            ,weight: 3
+                            ,x: 30
+                            ,y: 30}
+                           ,{_: {}
+                            ,color: Color.green
+                            ,h: 80
+                            ,id: "2"
+                            ,text: "chook"
+                            ,w: 200
+                            ,weight: 3
+                            ,x: 100
+                            ,y: 300}]);
+   var dummyShingleSource = A3(Automaton.run,
+   Techtangents.Fewtile.Alien.Cycler.cycler(A2(Techtangents.Fewtile.Alien.NonEmpty.NonEmpty,
+   sstate1,
+   _J.toList([sstate2]))),
+   _J.toList([]),
+   ticker);
+   var state2 = _J.toList([{_: {}
+                           ,color: Color.red
+                           ,id: "1"
+                           ,text: "hello2"
+                           ,weight: 3}
+                          ,{_: {}
+                           ,color: Color.green
+                           ,id: "2"
+                           ,text: "chook2"
+                           ,weight: 3}]);
+   var state1 = _J.toList([{_: {}
+                           ,color: Color.red
+                           ,id: "1"
+                           ,text: "hello"
+                           ,weight: 3}
+                          ,{_: {}
+                           ,color: Color.green
+                           ,id: "2"
+                           ,text: "chook"
+                           ,weight: 3}]);
+   var dummyTileSource = A3(Automaton.run,
+   Techtangents.Fewtile.Alien.Cycler.cycler(A2(Techtangents.Fewtile.Alien.NonEmpty.NonEmpty,
+   state1,
+   _J.toList([state2]))),
+   _J.toList([]),
+   ticker);
+   _elm.Techtangents.Fewtile.Sources.DummySource.values = {_op: _op
+                                                          ,state1: state1
+                                                          ,state2: state2
+                                                          ,dummyTileSource: dummyTileSource
+                                                          ,sstate1: sstate1
+                                                          ,sstate2: sstate2
+                                                          ,dummyShingleSource: dummyShingleSource
+                                                          ,ticker: ticker};
+   return _elm.Techtangents.Fewtile.Sources.DummySource.values;
+};

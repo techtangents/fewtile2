@@ -1,0 +1,79 @@
+Elm.Techtangents = Elm.Techtangents || {};
+Elm.Techtangents.Fewtile = Elm.Techtangents.Fewtile || {};
+Elm.Techtangents.Fewtile.Alien = Elm.Techtangents.Fewtile.Alien || {};
+Elm.Techtangents.Fewtile.Alien.Cycler = Elm.Techtangents.Fewtile.Alien.Cycler || {};
+Elm.Techtangents.Fewtile.Alien.Cycler.make = function (_elm) {
+   _elm.Techtangents = _elm.Techtangents || {};
+   _elm.Techtangents.Fewtile = _elm.Techtangents.Fewtile || {};
+   _elm.Techtangents.Fewtile.Alien = _elm.Techtangents.Fewtile.Alien || {};
+   _elm.Techtangents.Fewtile.Alien.Cycler = _elm.Techtangents.Fewtile.Alien.Cycler || {};
+   if (_elm.Techtangents.Fewtile.Alien.Cycler.values)
+   return _elm.Techtangents.Fewtile.Alien.Cycler.values;
+   var _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   _E = _N.Error.make(_elm),
+   _J = _N.JavaScript.make(_elm),
+   $moduleName = "Techtangents.Fewtile.Alien.Cycler";
+   var Automaton = Elm.Automaton.make(_elm);
+   var Basics = Elm.Basics.make(_elm);
+   var Color = Elm.Color.make(_elm);
+   var Graphics = Graphics || {};
+   Graphics.Collage = Elm.Graphics.Collage.make(_elm);
+   var Graphics = Graphics || {};
+   Graphics.Element = Elm.Graphics.Element.make(_elm);
+   var List = Elm.List.make(_elm);
+   var Maybe = Elm.Maybe.make(_elm);
+   var Native = Native || {};
+   Native.Ports = Elm.Native.Ports.make(_elm);
+   var Prelude = Elm.Prelude.make(_elm);
+   var Signal = Elm.Signal.make(_elm);
+   var String = Elm.String.make(_elm);
+   var Techtangents = Techtangents || {};
+   Techtangents.Fewtile = Techtangents.Fewtile || {};
+   Techtangents.Fewtile.Alien = Techtangents.Fewtile.Alien || {};
+   Techtangents.Fewtile.Alien.NonEmpty = Elm.Techtangents.Fewtile.Alien.NonEmpty.make(_elm);
+   var Text = Elm.Text.make(_elm);
+   var Time = Elm.Time.make(_elm);
+   var _op = {};
+   var cycle = function (_v0) {
+      return function () {
+         switch (_v0.ctor)
+         {case "NonEmpty":
+            return function () {
+                 switch (_v0._1.ctor)
+                 {case "::":
+                    return A2(Techtangents.Fewtile.Alien.NonEmpty.NonEmpty,
+                      _v0._1._0,
+                      _L.append(_v0._1._1,
+                      _J.toList([_v0._0])));
+                    case "[]":
+                    return A2(Techtangents.Fewtile.Alien.NonEmpty.NonEmpty,
+                      _v0._0,
+                      _v0._1);}
+                 _E.Case($moduleName,
+                 "between lines 10 and 11");
+              }();}
+         _E.Case($moduleName,
+         "between lines 10 and 11");
+      }();
+   };
+   var cycler = function (list) {
+      return A2(Automaton.hiddenState,
+      list,
+      F2(function (_v7,cur) {
+         return function () {
+            return function () {
+               var next = cycle(cur);
+               return {ctor: "_Tuple2"
+                      ,_0: next
+                      ,_1: Techtangents.Fewtile.Alien.NonEmpty.neHead(next)};
+            }();
+         }();
+      }));
+   };
+   _elm.Techtangents.Fewtile.Alien.Cycler.values = {_op: _op
+                                                   ,cycle: cycle
+                                                   ,cycler: cycler};
+   return _elm.Techtangents.Fewtile.Alien.Cycler.values;
+};

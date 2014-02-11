@@ -1,0 +1,56 @@
+Elm.Techtangents = Elm.Techtangents || {};
+Elm.Techtangents.Fewtile = Elm.Techtangents.Fewtile || {};
+Elm.Techtangents.Fewtile.Shingle = Elm.Techtangents.Fewtile.Shingle || {};
+Elm.Techtangents.Fewtile.Shingle.make = function (_elm) {
+   _elm.Techtangents = _elm.Techtangents || {};
+   _elm.Techtangents.Fewtile = _elm.Techtangents.Fewtile || {};
+   _elm.Techtangents.Fewtile.Shingle = _elm.Techtangents.Fewtile.Shingle || {};
+   if (_elm.Techtangents.Fewtile.Shingle.values)
+   return _elm.Techtangents.Fewtile.Shingle.values;
+   var _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   _E = _N.Error.make(_elm),
+   _J = _N.JavaScript.make(_elm),
+   $moduleName = "Techtangents.Fewtile.Shingle";
+   var Basics = Elm.Basics.make(_elm);
+   var Color = Elm.Color.make(_elm);
+   var Graphics = Graphics || {};
+   Graphics.Collage = Elm.Graphics.Collage.make(_elm);
+   var Graphics = Graphics || {};
+   Graphics.Element = Elm.Graphics.Element.make(_elm);
+   var List = Elm.List.make(_elm);
+   var Maybe = Elm.Maybe.make(_elm);
+   var Native = Native || {};
+   Native.Ports = Elm.Native.Ports.make(_elm);
+   var Prelude = Elm.Prelude.make(_elm);
+   var Signal = Elm.Signal.make(_elm);
+   var String = Elm.String.make(_elm);
+   var Techtangents = Techtangents || {};
+   Techtangents.Fewtile = Techtangents.Fewtile || {};
+   Techtangents.Fewtile.Tile = Elm.Techtangents.Fewtile.Tile.make(_elm);
+   var Text = Elm.Text.make(_elm);
+   var Time = Elm.Time.make(_elm);
+   var _op = {};
+   var Shingle = F8(function (a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g,
+   h) {
+      return {_: {}
+             ,color: d
+             ,h: h
+             ,id: a
+             ,text: b
+             ,w: g
+             ,weight: c
+             ,x: e
+             ,y: f};
+   });
+   _elm.Techtangents.Fewtile.Shingle.values = {_op: _op
+                                              ,Shingle: Shingle};
+   return _elm.Techtangents.Fewtile.Shingle.values;
+};
