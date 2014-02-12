@@ -42,6 +42,8 @@ data State k = Stable [Shingle] | Animating [Op k Shingle]
 main : Element
 main =
   collage 600 600 [
-    filled red (rect 100 100)
+    filled red (rect 100 100),
+    outlined (solid black) (rect 100 100),
+    toForm (container 100 100 middle (centered (Text.color black (toText "hello"))))
   ]
 
