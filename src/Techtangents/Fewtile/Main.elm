@@ -37,5 +37,11 @@ data State k = Stable [Shingle] | Animating [Op k Shingle]
 
 --type Q = {t: Time, w: Int, h: Int, s: [Shingle]}
 
-main : Signal Element
-main = main
+-- collage : Int -> Int -> [Form] -> Element
+
+main : Element
+main =
+  collage 600 600 [
+    filled red (rect 100 100)
+  ]
+

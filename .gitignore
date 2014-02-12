@@ -2,3 +2,4 @@
 /scratch
 *.sublime-workspace
 /src/elm/cache
+/cache
