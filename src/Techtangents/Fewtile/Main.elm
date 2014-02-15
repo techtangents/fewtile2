@@ -2,9 +2,10 @@ module Techtangents.Fewtile.Main where
 
 import JavaScript
 import Window
-import Color
 
 import Automaton (Automaton, run, hiddenState)
+import open Color
+import open List
 
 import open Techtangents.Fewtile.Sources.DummySource
 import open Techtangents.Fewtile.Shingle
@@ -39,11 +40,35 @@ data State k = Stable [Shingle] | Animating [Op k Shingle]
 
 -- collage : Int -> Int -> [Form] -> Element
 
+intRect : Int -> Int -> Shape
+intRect w h =
+  rect (toFloat w) (toFloat h)
+
+type Rect = {x:Int, y:Int, w:Int, h:Int}
+
+
+
+
+drawTile : Shingle -> Element
+drawTile {text,color,x,y,w,h} =
+  container (x + w) (y + h) (topLeftAt (absolute x) (absolute y)) (
+    collage w h [
+      filled color (intRect w h),
+      outlined (solid black) (intRect w h),
+      toForm (container w h middle (centered (Text.color black (toText text))))
+    ]
+  )
+
+drawTiles : [Element]
+drawTiles =
+  map drawTile [
+    {id="1", text="tile 1", color=green, x=0, y=0, w=100, h=150},
+    {id="2", text="tile 2", color=lightBlue, x=150, y=0, w=200, h=150},
+    {id="3", text="tile 3", color=lightOrange, x=150, y=200, w=100, h=150}
+  ]
+
 main : Element
 main =
-  collage 600 600 [
-    filled red (rect 100 100),
-    outlined (solid black) (rect 100 100),
-    toForm (container 100 100 middle (centered (Text.color black (toText "hello"))))
-  ]
+  layers drawTiles
+
 

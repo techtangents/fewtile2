@@ -25,13 +25,13 @@ dummyTileSource =
 
 
 sstate1 : [Shingle]
-sstate1 = [ { id="1", text="hello", weight=3, color=red,   x=30,  y=30,  w=300, h=100}
-          , { id="2", text="chook", weight=3, color=green, x=100, y=300, w=200, h=80}
+sstate1 = [ { id="1", text="hello", color=red,   x=30,  y=30,  w=300, h=100}
+          , { id="2", text="chook", color=green, x=100, y=300, w=200, h=80}
           ]
 
 sstate2 : [Shingle]
-sstate2 = [ { id="1", text="hello", weight=3, color=red,   x=300, y=30,  w=300, h=100}
-          , { id="2", text="chook", weight=3, color=green, x=10,  y=300, w=200, h=80}
+sstate2 = [ { id="1", text="hello", color=red,   x=300, y=30,  w=300, h=100}
+          , { id="2", text="chook", color=green, x=10,  y=300, w=200, h=80}
           ]
 
 
