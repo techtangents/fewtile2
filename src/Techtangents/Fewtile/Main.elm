@@ -40,14 +40,21 @@ data State k = Stable [Shingle] | Animating [Op k Shingle]
 
 -- collage : Int -> Int -> [Form] -> Element
 
+
+dummyStaticSource : Signal [Shingle]
+dummyStaticSource =
+  constant [
+    {id="1", text="tile 1", color=green, x=0, y=0, w=100, h=150},
+    {id="2", text="tile 2", color=lightBlue, x=150, y=0, w=200, h=150},
+    {id="3", text="tile 3", color=lightOrange, x=150, y=200, w=100, h=150}
+  ]
+
 intRect : Int -> Int -> Shape
 intRect w h =
   rect (toFloat w) (toFloat h)
 
-type Rect = {x:Int, y:Int, w:Int, h:Int}
-
-
-
+curState : Signal [Shingle]
+curState = dummyStaticSource --dummyShingleSource
 
 drawTile : Shingle -> Element
 drawTile {text,color,x,y,w,h} =
@@ -59,16 +66,11 @@ drawTile {text,color,x,y,w,h} =
     ]
   )
 
-drawTiles : [Element]
-drawTiles =
-  map drawTile [
-    {id="1", text="tile 1", color=green, x=0, y=0, w=100, h=150},
-    {id="2", text="tile 2", color=lightBlue, x=150, y=0, w=200, h=150},
-    {id="3", text="tile 3", color=lightOrange, x=150, y=200, w=100, h=150}
-  ]
+render : [Shingle] -> Element
+render = layers . (map drawTile)
 
-main : Element
+main : Signal Element
 main =
-  layers drawTiles
+  lift render curState
 
 
