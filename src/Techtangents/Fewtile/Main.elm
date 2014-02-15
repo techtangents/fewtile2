@@ -54,7 +54,7 @@ intRect w h =
   rect (toFloat w) (toFloat h)
 
 curState : Signal [Shingle]
-curState = dummyStaticSource --dummyShingleSource
+curState = dummyShingleSource
 
 drawTile : Shingle -> Element
 drawTile {text,color,x,y,w,h} =
@@ -67,7 +67,10 @@ drawTile {text,color,x,y,w,h} =
   )
 
 render : [Shingle] -> Element
-render = layers . (map drawTile)
+render ss =
+  if isEmpty ss
+    then plainText "no tiles"
+    else layers <| map drawTile ss
 
 main : Signal Element
 main =
