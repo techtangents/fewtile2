@@ -9,6 +9,8 @@ import open List
 
 import open Techtangents.Fewtile.Sources.DummySource
 import open Techtangents.Fewtile.Shingle
+import open Techtangents.Fewtile.Tile
+import open Techtangents.Fewtile.Layout.Layout
 import open Techtangents.Fewtile.Op
 import open Techtangents.Fewtile.Animations.AddedAnim
 import open Techtangents.Fewtile.Animations.ChangedAnim
@@ -40,6 +42,8 @@ data State k = Stable [Shingle] | Animating [Op k Shingle]
 
 -- collage : Int -> Int -> [Form] -> Element
 
+undefined = undefined
+
 
 dummyStaticSource : Signal [Shingle]
 dummyStaticSource =
@@ -53,8 +57,12 @@ intRect : Int -> Int -> Shape
 intRect w h =
   rect (toFloat w) (toFloat h)
 
-curState : Signal [Shingle]
-curState = dummyShingleSource
+
+tileState : Signal [Tile]
+tileState = undefined
+
+shingleState : Signal [Shingle]
+shingleState = dummyShingleSource
 
 drawTile : Shingle -> Element
 drawTile {text,color,x,y,w,h} =
@@ -66,6 +74,8 @@ drawTile {text,color,x,y,w,h} =
     ]
   )
 
+
+
 render : [Shingle] -> Element
 render ss =
   if isEmpty ss
@@ -74,6 +84,6 @@ render ss =
 
 main : Signal Element
 main =
-  lift render curState
+  lift render shingleState
 
 
