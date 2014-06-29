@@ -1,6 +1,6 @@
 module Techtangents.Fewtile.Animations.AddedAnim where
 
-import open Techtangents.Fewtile.Shingle
+import Techtangents.Fewtile.Shingle (..)
 
 -- TODO: implement
 addedAnim : Float -> Shingle -> Shingle

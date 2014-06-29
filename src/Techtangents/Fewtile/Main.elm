@@ -1,27 +1,22 @@
 module Techtangents.Fewtile.Main where
 
-import JavaScript
-import Window
+import Window (..)
 
 import Automaton (Automaton, run, hiddenState)
-import open Color
-import open List
+import Color (..)
+import List (..)
 
-import open Techtangents.Fewtile.Sources.DummySource
-import open Techtangents.Fewtile.Shingle
-import open Techtangents.Fewtile.Tile
-import open Techtangents.Fewtile.Layout.Layout
-import open Techtangents.Fewtile.Op
-import open Techtangents.Fewtile.Animations.AddedAnim
-import open Techtangents.Fewtile.Animations.ChangedAnim
-import open Techtangents.Fewtile.Animations.RemovedAnim
+import Techtangents.Fewtile.Sources.DummySource (..)
+import Techtangents.Fewtile.Shingle (..)
+import Techtangents.Fewtile.Tile (..)
+import Techtangents.Fewtile.Layout.Layout (..)
+import Techtangents.Fewtile.Op (..)
+import Techtangents.Fewtile.Animations.AddedAnim (..)
+import Techtangents.Fewtile.Animations.ChangedAnim (..)
+import Techtangents.Fewtile.Animations.RemovedAnim (..)
 
 
 import List (concatMap, map)
-
---title = constant (JavaScript.fromString "Fewtile")
---foreign export jsevent "title"
---  title : Signal JavaScript.JSString
 
 data State k = Stable [Shingle] | Animating [Op k Shingle]
 

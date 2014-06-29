@@ -1,6 +1,6 @@
 module Techtangents.Fewtile.Animations.Progress where
 
-import open Techtangents.Fewtile.Shingle
+import Techtangents.Fewtile.Shingle (..)
 
 progressColor : Float -> Color -> Color -> Color
 progressColor percent start end =

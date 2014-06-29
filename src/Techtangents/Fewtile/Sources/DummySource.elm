@@ -1,7 +1,7 @@
 module Techtangents.Fewtile.Sources.DummySource where
 
 import Automaton (Automaton, run)
-import open Color
+import Color (..)
 
 import Techtangents.Fewtile.Sources.Source
 import Techtangents.Fewtile.Alien.Cycler (cycler)

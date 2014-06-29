@@ -6,7 +6,7 @@
     "exposed-modules": [],
     "elm-version": "0.12.3",
     "dependencies": {
-    	"evancz/automaton": "0.1.0.1" 	
+    	"evancz/automaton": "0.1.0.3" 	
     },
     "repository": "https://github.com/USER/PROJECT.git"
 }
