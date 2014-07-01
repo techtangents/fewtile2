@@ -16,11 +16,14 @@ clean() {
 
 cleanDirs() {
   clean "$scratch" &&
+  mkdir -p "$scratch/dist" &&
+  mkdir -p "$scratch/test" &&
   clean "$dist"
 }
 
 compile() {
-  elm -b "$scratch" --make --src-dir=src Techtangents/Fewtile/Main.elm
+  elm -b "$scratch/dist" --make --src-dir=src Techtangents/Fewtile/Main.elm &&
+  elm -b "$scratch/test" --make --src-dir=src Techtangents/Fewtile/Test/RunTests.elm
 }
 
 gather() {
