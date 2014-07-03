@@ -19,3 +19,7 @@ neFromList list =
   case list of []        -> Nothing
                (x :: xs) -> Just (NonEmpty x xs)
 
+neFromList' : [a] -> Maybe [a]
+neFromList' list = 
+  case list of [] -> Nothing
+               xs  -> Just xs

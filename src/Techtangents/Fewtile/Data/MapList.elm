@@ -1,9 +1,16 @@
-module Techtangents.Fewtile.Data.MapList where
+module Techtangents.Fewtile.Data.MapList 
+  ( empty
+  , insert
+  , get
+  ) where
 
 import Dict
 import Dict (Dict)
 import Maybe
 import Techtangents.Fewtile.Data.MaybeX as MX
+import Techtangents.Fewtile.Alien.NonEmpty as NE
+
+-- FIX: Probably use a NonEmpty list instead of []
 
 data MapList comparable a = 
   MapList (Dict comparable [a])
@@ -13,9 +20,27 @@ empty =
   MapList (Dict.empty)
 
 insert : comparable -> v -> MapList comparable v -> MapList comparable v
-insert i x (MapList m) = 
-  MapList <| Dict.update i (\mx -> Just (x :: (MX.getOrElse [] mx))) m
+insert i x = 
+  under 
+    <| Dict.update i 
+    <| \mx -> Just <| x :: (MX.getOrElse [] mx)
 
 get : comparable -> MapList comparable v -> [v]
 get c (MapList m) = 
   Dict.getOrElse [] c m
+
+removeByKey : comparable -> MapList comparable v -> MapList comparable v
+removeByKey i =
+  under
+    <| Dict.remove i
+
+-- FIX: requires an Eq constraint on v, but this is inexpressible in Elm
+removeByKeyValue : comparable -> v -> MapList comparable v -> MapList comparable v
+removeByKeyValue i x =
+  under
+    <| Dict.update i
+    <| \mx -> (MX.getOrElse [] mx) |> filter ((/=) x) |> NE.neFromList'
+
+under : (Dict comparable [a] -> Dict comparable [a]) -> MapList comparable a -> MapList comparable a
+under f (MapList m) = MapList <| f m
+
