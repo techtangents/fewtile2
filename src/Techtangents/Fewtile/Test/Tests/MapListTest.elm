@@ -12,10 +12,23 @@ tests =
   [ test "Get on empty" 
       (assertEqual [] (ML.get 3 ML.empty))
 
-  , test "removeByKeyValue" 
+  , test "removeByKeyValue 1" 
       (
         let expected = ML.empty |> ML.insert 3 "b" |> ML.insert 1 "c"
             actual   = expected |> ML.insert 3 "a" |> ML.removeByKeyValue 3 "a"
+        in  assertEqual expected actual
+      )
+  , test "removeByKeyValue 2" 
+      (
+        let expected = ML.empty |> ML.insert 3 "b" |> ML.insert 1 "c"
+            actual   = expected |> ML.insert 3 "a" |> ML.insert 3 "a" |> ML.removeByKeyValue 3 "a"
+        in  assertEqual expected actual
+      )
+
+  , test "removeByKeyValue 2" 
+      (
+        let expected = ML.empty
+            actual   = ML.empty |> ML.removeByKeyValue 3 "a"
         in  assertEqual expected actual
       )
   ]
