@@ -1,7 +1,7 @@
 module Techtangents.Fewtile.Layout.Layout where
 
-import Techtangents.Fewtile.Tile (..)
-import Techtangents.Fewtile.Shingle (..)
+import Techtangents.Fewtile.Data.Tile (..)
+import Techtangents.Fewtile.Data.Shingle (..)
 import Dict (..)
 import Maybe (..)
 

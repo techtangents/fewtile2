@@ -1,6 +1,6 @@
-module Techtangents.Fewtile.Shingle where
+module Techtangents.Fewtile.Data.Shingle where
 
-import Techtangents.Fewtile.Tile
+import Techtangents.Fewtile.Data.Tile
 
 -- A Tile that has been laid out ready for display
 type Shingle = { id     : String

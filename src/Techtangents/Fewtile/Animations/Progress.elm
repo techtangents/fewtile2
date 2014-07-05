@@ -1,6 +1,8 @@
 module Techtangents.Fewtile.Animations.Progress where
 
-import Techtangents.Fewtile.Shingle (..)
+import Techtangents.Fewtile.Data.Shingle (..)
+
+-- FIX: there's an 'easing' library in the elm libraries
 
 progressColor : Float -> Color -> Color -> Color
 progressColor percent start end =

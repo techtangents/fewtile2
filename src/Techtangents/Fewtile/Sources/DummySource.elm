@@ -5,8 +5,8 @@ import Color (..)
 
 import Techtangents.Fewtile.Sources.Source
 import Techtangents.Fewtile.Data.Cycler (cycler)
-import Techtangents.Fewtile.Tile (Tile)
-import Techtangents.Fewtile.Shingle (Shingle)
+import Techtangents.Fewtile.Data.Tile (Tile)
+import Techtangents.Fewtile.Data.Shingle (Shingle)
 import Techtangents.Fewtile.Data.NonEmpty (NonEmpty)
 
 state1 : [Tile]
