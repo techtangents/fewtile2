@@ -2,6 +2,8 @@ module Techtangents.Fewtile.Data.MapList
   ( empty
   , insert
   , get
+  , removeByKey
+  , removeByKeyValue
   ) where
 
 import Dict
@@ -42,5 +44,6 @@ removeByKeyValue i x =
     <| \mx -> (MX.getOrElse [] mx) |> filter ((/=) x) |> NE.neFromList'
 
 under : (Dict comparable [a] -> Dict comparable [a]) -> MapList comparable a -> MapList comparable a
-under f (MapList m) = MapList <| f m
+under f (MapList m) = 
+  MapList <| f m
 
