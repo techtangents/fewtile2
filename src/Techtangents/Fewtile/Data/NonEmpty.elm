@@ -1,4 +1,4 @@
-module Techtangents.Fewtile.Alien.NonEmpty where
+module Techtangents.Fewtile.Data.NonEmpty where
 
 import Maybe (Maybe, Nothing, Just)
 

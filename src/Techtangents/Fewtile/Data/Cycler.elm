@@ -1,8 +1,8 @@
-module Techtangents.Fewtile.Alien.Cycler where
+module Techtangents.Fewtile.Data.Cycler where
 
 import Automaton (Automaton, state, pure, hiddenState)
 
-import Techtangents.Fewtile.Alien.NonEmpty (NonEmpty, neFromList, neHead)
+import Techtangents.Fewtile.Data.NonEmpty (NonEmpty, neFromList, neHead)
 
 -- Cycles a NonEmpty List - the first element becomes the last
 cycle : NonEmpty a -> NonEmpty a

@@ -4,10 +4,10 @@ import Automaton (Automaton, run)
 import Color (..)
 
 import Techtangents.Fewtile.Sources.Source
-import Techtangents.Fewtile.Alien.Cycler (cycler)
+import Techtangents.Fewtile.Data.Cycler (cycler)
 import Techtangents.Fewtile.Tile (Tile)
 import Techtangents.Fewtile.Shingle (Shingle)
-import Techtangents.Fewtile.Alien.NonEmpty (NonEmpty)
+import Techtangents.Fewtile.Data.NonEmpty (NonEmpty)
 
 state1 : [Tile]
 state1 = [ { id="1", text="hello", weight=3, color=red }

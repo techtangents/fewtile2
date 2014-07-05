@@ -10,7 +10,7 @@ import Dict
 import Dict (Dict)
 import Maybe
 import Techtangents.Fewtile.Data.MaybeX as MX
-import Techtangents.Fewtile.Alien.NonEmpty as NE
+import Techtangents.Fewtile.Data.NonEmpty as NE
 
 -- FIX: Probably use a NonEmpty list instead of []
 
