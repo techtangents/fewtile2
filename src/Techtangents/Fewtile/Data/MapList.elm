@@ -4,10 +4,12 @@ module Techtangents.Fewtile.Data.MapList
   , get
   , removeByKey
   , removeByKeyValue
+  , sortValuesWith
   ) where
 
 import Dict
 import Dict (Dict)
+import List
 import Maybe
 import Techtangents.Fewtile.Data.MaybeX as MX
 import Techtangents.Fewtile.Data.NonEmpty as NE
@@ -42,6 +44,11 @@ removeByKeyValue i x =
   under
     <| Dict.update i
     <| \mx -> (MX.getOrElse [] mx) |> filter ((/=) x) |> NE.neFromList'
+
+sortValuesWith : (a -> a -> Order) -> MapList comparable a -> MapList comparable a
+sortValuesWith f = 
+  under
+    <| Dict.map (List.sortWith f)
 
 under : (Dict comparable [a] -> Dict comparable [a]) -> MapList comparable a -> MapList comparable a
 under f (MapList m) = 
