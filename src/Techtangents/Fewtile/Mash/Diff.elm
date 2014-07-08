@@ -13,19 +13,7 @@ import Techtangents.Fewtile.Mash.Fn(..)
 import Techtangents.Fewtile.Mash.Index(..)
 import Techtangents.Fewtile.Data.DictX as DictX
 import Techtangents.Fewtile.Data.ListX as ListX
-
-
-outerJoin : (a -> comparable) -> [a] -> [a] -> Dict comparable (Maybe a, Maybe a)
-outerJoin f olds news = 
-  let q = List.foldl
-            (\o -> Dict.insert (f o) (Just o, Nothing))
-            Dict.empty
-            olds
-  
-  in  List.foldl 
-            (\n -> DictX.update' (f n) (\mo -> (maybe Nothing fst mo, Just n)))
-            q
-            news
+import Techtangents.Fewtile.Mash.OuterJoin(..)
 
 diff : (a -> comparable) -> [a] -> [a] -> [Op comparable a]
 diff f olds news =
