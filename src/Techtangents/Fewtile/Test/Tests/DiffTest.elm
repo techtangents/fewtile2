@@ -6,6 +6,8 @@ import ElmTest.Runner.Element (..)
 
 import Techtangents.Fewtile.Mash.Diff
 
+-- FIX: actually write tests :)
+
 tests : Test
 tests = 
   suite "Diff" 
