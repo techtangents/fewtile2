@@ -5,6 +5,7 @@ module Techtangents.Fewtile.Data.MapList
   , removeByKey
   , removeByKeyValue
   , sortValuesWith
+  , toList
   ) where
 
 import Dict
@@ -54,3 +55,6 @@ under : (Dict comparable [a] -> Dict comparable [a]) -> MapList comparable a -> 
 under f (MapList m) = 
   MapList <| f m
 
+toList : MapList comparable v -> [(comparable, [v])]
+toList (MapList m) = 
+  Dict.toList m

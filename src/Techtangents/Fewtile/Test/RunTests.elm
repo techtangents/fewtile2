@@ -7,6 +7,7 @@ import ElmTest.Runner.Element (..)
 import Techtangents.Fewtile.Test.Tests.MapListTest as MapListTest
 import Techtangents.Fewtile.Test.Tests.GroupTest as GroupTest
 import Techtangents.Fewtile.Test.Tests.DiffTest as DiffTest
+import Techtangents.Fewtile.Test.Tests.LayoutTest as LayoutTest
 
 main : Element
 main = runDisplay tests
@@ -17,4 +18,5 @@ tests =
     [ MapListTest.tests
     , GroupTest.tests
     , DiffTest.tests
+    , LayoutTest.tests
     ]
