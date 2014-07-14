@@ -14,33 +14,7 @@ aspectRatio =
   7 / 3
 
 
---   [ {      } {         } {       } ]
--- border    border      border    border
---       alloc     alloc       alloc
---
--- divide space into 
-{-
-
-find total weight
-remaining weight = total weight
-remaining size = total size
-start pos = border
-
-layout one section:
-- slicepercent = remaining weight / total weight
-- slicesize = round (percent * remaining size)
-- slice start = start pos
-- remaining size -= slicesize
-- remaining weight -= sliceweight
-- start pos += slicesize
-
-For the final segment, remaining weight should equal slice weight
-
-
--}
-
-
-{-
+{-|
   Allocate a length of space into slices, given the weights of the slices.
 
   Sizes are quantized to integers by rounding.
@@ -49,10 +23,9 @@ For the final segment, remaining weight should equal slice weight
   I suspect that the difference in slice size between the rounded versions and if you just allocated 
   to floats is less than 1 for each slice.
 
-  The returned List of sizes is parallel to the input list.
+  The returned List of allocations is parallel to the input list.
 -}
-
-allocate : Int -> [Int] -> [Int]
+allocate : Int -> [Int] -> [{start:Int, size: Int}]
 allocate totalSize weights = 
   let 
     totalWeight = List.sum weights
@@ -67,12 +40,14 @@ allocate totalSize weights =
             size = if remWeight == 0 
                       then 0 
                       else round <| (toFloat weight) / (toFloat remWeight) * (toFloat remSize)
+            newRemSize = remSize - size
           in
             { remWeight = remWeight - weight
-            , remSize   = remSize - size
-            , acc       = size :: acc
+            , remSize   = newRemSize
+            , acc       = {start = newRemSize, size = size} :: acc
             }
         )
         initialState
         weights
   in r.acc
+  
