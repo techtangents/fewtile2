@@ -13,7 +13,6 @@ aspectRatio : Float
 aspectRatio = 
   7 / 3
 
-type Alloc = {start:Int, size: Int}
 
 {-|
   Allocate a length of space into slices, given the weights of the slices.
@@ -26,7 +25,7 @@ type Alloc = {start:Int, size: Int}
 
   The returned List of allocations is parallel to the input list.
 -}
-allocate : Int -> [Int] -> [Alloc]
+allocate : Int -> [Int] -> [{start:Int, size: Int}]
 allocate totalSize weights = 
   let 
     totalWeight = List.sum weights
@@ -51,11 +50,4 @@ allocate totalSize weights =
         initialState
         weights
   in r.acc
-
-
-pad : Int -> [Alloc] -> [Alloc]
-pad padding als = 
-  let l = List.foldl 
-            (\{start,size} (acc, newStart) -> ({start=newStart,size=size} :: acc, newStart+size+padding) 
-            ([], padding)
-  in  reverse (fst l)
+  
