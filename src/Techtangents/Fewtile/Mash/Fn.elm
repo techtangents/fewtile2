@@ -2,6 +2,7 @@ module Techtangents.Fewtile.Mash.Fn where
 
 (∘) : (g -> h) -> (f -> g) -> f -> h
 (∘) = (.)
+infixr 9 ∘
 
 (∘∘) : (h -> i) -> (f -> g -> h) -> f -> g -> i
 (∘∘) hi fgh = \f g -> hi (fgh f g)
